@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.slider input {
+    -webkit-appearance: none;
+    z-index: 9999;
+    background: transparent;
+}
+
+.slider input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 4px solid #252521;
+}
+
+.slider progress {
+    -webkit-appearance: none;
+}
+
+.slider progress::-webkit-progress-bar {
+    background: #d8d8d0;
+}
+
+.slider progress::-webkit-progress-value {
+    background: #252521;
+}
