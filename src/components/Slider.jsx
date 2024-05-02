@@ -12,8 +12,8 @@ function Slider() {
     }
 
     return (
-        <div className="text- flex w-full items-center justify-center gap-[98px] font-inter text-garlic">
-            <div className="text-start font-inter font-medium ">
+        <div className=" space flex w-full items-center justify-center gap-[60px] font-inter text-garlic">
+            <div className="w-[360px] text-start font-inter font-medium ">
                 Suggesting an ideal plan for
                 <p>
                     producing around &nbsp;
