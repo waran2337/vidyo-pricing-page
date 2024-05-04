@@ -4,7 +4,7 @@ import { features } from "../data";
 
 function Pricing() {
     return (
-        <div className=" mx-5 flex h-dvh  flex-col items-center  justify-start text-center lg:mx-[124px] ">
+        <div className=" h-vh mx-5 flex  flex-col items-center  justify-start text-center lg:mx-[124px] ">
             <img
                 className="mt-12 h-[167px]  w-[675px]"
                 src="src\assets\Screenshot.png"

@@ -1,7 +1,14 @@
+import { useState } from "react";
+import SelectDropdown from "./SelectDropdown";
+import { DotGrid } from "./DotGrid";
+
 function Plans({ plan }) {
+    const [item, setItem] = useState("");
+    console.log(item);
     return (
         <div className="text-gralic h-[580px] w-[280px] rounded-lg bg-[#FFFFFF] p-4 text-start ">
             <div>
+                <DotGrid />
                 <h1 className="h-[22px] font-inter text-sm font-semibold">
                     {plan.planName}
                 </h1>
@@ -28,19 +35,18 @@ function Plans({ plan }) {
 
             <div className="my-5 h-[1px] w-full bg-[#EEEEE9]"></div>
 
-            <div className="mb-6 mt-5">
-                <label htmlFor="minutes">Select minutes</label>
-                <select
-                    name="minutes"
-                    id="minutes"
-                    className="h-[40px] w-full rounded-lg border border-[#D8D8D0] px-4 py-2 text-sm font-normal text-grease"
-                >
-                    <option value="900">900 mins</option>
-                    <option value="1200">1200 mins</option>
-                    <option value="1500">1500 mins</option>
-                    <option value="1800">1800 mins</option>
-                </select>
-            </div>
+            {plan.planName === "Custom" && (
+                <div className="mb-6 mt-5">
+                    <h4 className="mb-2 font-inter text-xs font-medium">
+                        Select minutes
+                    </h4>
+
+                    <SelectDropdown
+                        value={item}
+                        onChange={(newValue) => setItem(newValue)}
+                    />
+                </div>
+            )}
 
             <ul className="text-center font-inter text-sm font-normal">
                 {plan.features.map((list) => (
