@@ -1,23 +1,30 @@
 import React from "react";
 
-export function DotGrid() {
+export function DotGrid({ planName }) {
+    const GRID_WIDTH = 20;
+    const GRID_HEIGHT = 20;
+    const dots = [];
+
+    for (let i = 0; i < GRID_WIDTH; i++) {
+        for (let j = 0; j < GRID_HEIGHT; j++) {
+            dots.push(
+                <div
+                    className={`DotGrid  h-[0.15rem] w-[0.15rem] rounded-full bg-[#D8D8D0] bg-gradient-to-b ${planName === "Growth" ? "opacity-20" : ""} `}
+                    key={`${i}-${j}`}
+                />
+            );
+        }
+    }
+
     return (
         <div
-            className="dark:bg-dot-white/[0.2] bg-dot-black/[0.2] relative flex  h-[50rem] w-full items-center 
-        justify-center bg-red-500 dark:bg-black"
+            style={{
+                gridTemplateColumns: `repeat(${GRID_WIDTH}, 1fr)`,
+                gridTemplateRows: `repeat(${GRID_HEIGHT}, 1fr)`,
+            }}
+            className="group pointer-events-none absolute -right-[73px] -top-14 z-0 grid h-[240px] w-[250px] place-content-center overflow-hidden"
         >
-            {/* Radial gradient for the container to give a faded look  */}
-            <div
-                className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white 
-            [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black"
-            ></div>
-
-            {/*<p
-                className="relative z-20 bg-gradient-to-b from-neutral-200 to-neutral-500 bg-clip-text 
-            py-8 text-4xl font-bold text-transparent sm:text-7xl"
-            >
-                Backgrounds
-                </p>*/}
+            {dots}
         </div>
     );
 }

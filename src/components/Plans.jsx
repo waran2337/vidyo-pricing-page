@@ -1,14 +1,29 @@
 import { useState } from "react";
 import SelectDropdown from "./SelectDropdown";
 import { DotGrid } from "./DotGrid";
+import CheckMark from "./CheckMark";
+import Arrow from "./Arrow";
+
+//const darkClass = "";
 
 function Plans({ plan }) {
     const [item, setItem] = useState("");
     console.log(item);
+    //background: linear-gradient(180deg, #383835 0%, rgba(37, 37, 33, 0) 100%);
+    // bg-gradient-to-t from-[#252521] to-[#383835]
+
+    const selectClass = {
+        black: " border-grease text-[#F6F6F2] bg-[#2C2C29] ",
+        white: "broder-[#D8D8D0] text-gralic bg-[#FFFFFF]",
+    };
+
     return (
-        <div className="text-gralic h-[580px] w-[280px] rounded-lg bg-[#FFFFFF] p-4 text-start ">
-            <div>
-                <DotGrid />
+        <div
+            className={`relative h-[580px] w-[280px] overflow-hidden rounded-lg border  ${plan.planName === "Growth" ? selectClass.black : selectClass.white}  p-4 text-start `}
+        >
+            <DotGrid planName={plan.planName} />
+
+            <div className="relative z-10">
                 <h1 className="h-[22px] font-inter text-sm font-semibold">
                     {plan.planName}
                 </h1>
@@ -19,16 +34,20 @@ function Plans({ plan }) {
                             /month
                         </span>
                     </h2>
-                    <p>
+                    <p
+                        className={`mt-[4px] font-inter text-xs font-normal ${plan.planName === "Growth" ? "text-[#D8D8D0]" : " text-garlic"}`}
+                    >
                         Billed annually at{" "}
-                        <span className="text-xs font-bold">35% off</span>
+                        <span className=" font-bold">35% off</span>
                     </p>
                 </div>
 
-                <button className="mt-6 flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-[#EEEEE9] py-[14px] pl-[48.5] pr-[72.5] text-sm font-medium">
+                <button
+                    className={`mt-6 flex h-12 w-full items-center justify-center gap-2 rounded-lg ${plan.planName === "Growth" ? "bg-[#943DEC]" : "border border-[#EEEEE9] bg-[#EEEEE9]"} py-[14px] pl-[48.5] pr-[72.5] text-sm font-medium`}
+                >
                     {plan.buttonName}{" "}
                     <div className="flex h-4 w-4 items-center justify-center">
-                        <img src="src\assets\arrow.svg" alt="rightTick" />
+                        <Arrow planName={plan.planName} />
                     </div>
                 </button>
             </div>
@@ -48,14 +67,14 @@ function Plans({ plan }) {
                 </div>
             )}
 
-            <ul className="text-center font-inter text-sm font-normal">
+            <ul className="text-start font-inter text-sm font-normal">
                 {plan.features.map((list) => (
                     <li
                         key={list}
                         className="mb-4 flex items-center justify-start  gap-2"
                     >
                         <div className="flex h-4 w-4 items-center justify-center">
-                            <img src="src\assets\Vector.svg" alt="rightTick" />
+                            <CheckMark planName={plan.planName} />
                         </div>
                         <div>{list}</div>
                     </li>
